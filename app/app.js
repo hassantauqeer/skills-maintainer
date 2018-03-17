@@ -44,6 +44,8 @@ import { translationMessages } from './i18n';
 
 // Import CSS reset and Global Styles
 import './global-styles';
+import "../node_modules/antd/dist/antd.css";
+import "./css/Home/style.css";
 
 // Create redux store with history
 const initialState = {};

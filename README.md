@@ -7,7 +7,7 @@ yarn
 ```bash
 yarn start
 ```
-this port is used in multiple palces so i strictly recommend using this port until you don't change ports from other places
+this port is used in multiple palces so i strictly recommend using this port until you don't change ports from other places inside the project
 ```bash
 port: localhost:3000 
 ```

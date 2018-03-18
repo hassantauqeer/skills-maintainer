@@ -12,6 +12,7 @@ const resolve = require('path').resolve;
 const app = express();
 var bodyParser = require('body-parser');
 var router = express.Router();
+var request = require("request");
 
 
 
@@ -36,22 +37,16 @@ app.use(function(req, res, next) {
 
 router.get('/', function(req, res) {
 
-  // for(var i=0; i<100; i++){
-  //   var ref = new Referral();
-  //
-  //   var rand = randomstring.generate({
-  //     length: 6,
-  //     charset: 'alphanumeric'
-  //   });
-  //
-  //   ref.ref_code = rand;
-  //   ref.save(function(err) {
-  //     if (err)
-  //       res.send(err);
-  //   });
-  //   console.log(ref)
-  //
-  // }
+  let options = { method: 'POST',
+    url: 'https://skill-maintainer.auth0.com/oauth/token',
+    headers: { 'content-type': 'application/json' },
+    body: '{"client_id":"8vR3323RdsKiZPRVJ150z1KTY0Ied0Up","client_secret":"uParsneFgWvfr8tp3lyyF_8L6L-7HApdO128V9DauLQeA8u7ZWNYeZ77TRSRiVPt","audience":"https://skill-maintainer.auth0.com/api/v2/","grant_type":"client_credentials"}' };
+
+  request(options, function (error, response, body) {
+    if (error) throw new Error(error);
+
+    console.log(body);
+  });
 
   res.json({ message: 'API Initialized!'});
 });

@@ -18,7 +18,9 @@ import saga from './saga';
 import LinkedIn from 'react-linkedin-login'
 import queryString  from 'query-string';
 import { saveLinkedConnection, joinLinkedIn } from "./actions";
-import { Card } from 'antd';
+import { Card, Button, Row } from 'antd';
+import Auth from '../Authorization/Auth.js';
+// import Button from "antd/lib/button/button.d";
 
 export class HomePage extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -30,15 +32,23 @@ export class HomePage extends React.Component { // eslint-disable-line react/pre
       this.props.saveLinkedConnection(connectionObj);
       this.props.joinLinkedIn();
     }
+
+    // const auth = new Auth();
+    // auth.login();
+  }
+  oAuthLogin = () => {
+
   }
   render() {
     // console.log(this.props.linkedInConnData, 'linkedInConnData')
     return (
       <div className="home-container">
         <Card title="Join Us" bordered={false} style={{ width: 300 }}>
-          <a href="https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=860t6xr8dnzugs&redirect_uri=http://localhost:3000&state=987654321&scope=r_basicprofile"><img  src={require("../../images/icons/linkedin-256.png")}/></a>
+          <Row  style={{ width: 300, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+            <a href="https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=860t6xr8dnzugs&redirect_uri=http://localhost:3000&state=987654321&scope=r_basicprofile"><img  src={require("../../images/icons/linkedin-256.png")}/></a>
+            <Button style={{marginTop: 20}} onClick={this.oAuthLogin}>Login LinkedIn with auth0</Button>
+          </Row>
         </Card>
-
       </div>
     );
   }
